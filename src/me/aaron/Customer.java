@@ -7,20 +7,18 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
 public class Customer extends JPanel{
     private JTextField firstNameField;
-    private JTextField lastNameField;
+    private JTextField secondNameField;
     private JTextField addressField;
     private JTextField phoneNumberField;
     private JTextField emailAddressField;
     private JButton submitButton;
     PreparedStatement pstat = null;
-    Connection connection = null;
 
     public Customer() {
         JFrame frame = new JFrame("Add Customer");
@@ -35,8 +33,8 @@ public class Customer extends JPanel{
         add(firstNameLabel, gbc);
 
         gbc.gridy = 1;
-        JLabel lastNameLabel = new JLabel("Last Name:");
-        add(lastNameLabel, gbc);
+        JLabel secondNameLabel = new JLabel("Last Name:");
+        add(secondNameLabel, gbc);
 
         gbc.gridy = 2;
         JLabel addressLabel = new JLabel("Address:");
@@ -58,8 +56,8 @@ public class Customer extends JPanel{
         add(firstNameField, gbc);
 
         gbc.gridy = 1;
-        lastNameField = new JTextField();
-        add(lastNameField, gbc);
+        secondNameField = new JTextField();
+        add(secondNameField, gbc);
 
         gbc.gridy = 2;
         addressField = new JTextField();
@@ -81,14 +79,14 @@ public class Customer extends JPanel{
     submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String firstName = firstNameField.getText();
-                String lastName = lastNameField.getText();
+                String secondName = secondNameField.getText();
                 String address = addressField.getText();
                 String phoneNumber = phoneNumberField.getText();
                 String emailAddress = emailAddressField.getText();
-                pstat = Main.sql.prepareStatement("INSERT INTO customer (firstName, lastName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?)");
+                pstat = Main.sql.prepareStatement("INSERT INTO customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?)");
                 try {
                     pstat.setString(1, firstName);
-                    pstat.setString(2, lastName);
+                    pstat.setString(2, secondName);
                     pstat.setString(3, address);
                     pstat.setString(4, phoneNumber);
                     pstat.setString(5, emailAddress);
