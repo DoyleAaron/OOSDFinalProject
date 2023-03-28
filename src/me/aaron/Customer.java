@@ -7,6 +7,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 public class Customer extends JPanel{
@@ -16,6 +19,9 @@ public class Customer extends JPanel{
     private JTextField phoneNumberField;
     private JTextField emailAddressField;
     private JButton submitButton;
+    PreparedStatement pstat = null;
+    Connection connection = null;
+
     public Customer() {
         JFrame frame = new JFrame("Add Customer");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -79,8 +85,17 @@ public class Customer extends JPanel{
                 String address = addressField.getText();
                 String phoneNumber = phoneNumberField.getText();
                 String emailAddress = emailAddressField.getText();
-
-                
+                pstat = Main.sql.prepareStatement("INSERT INTO customer (firstName, lastName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?)");
+                try {
+                    pstat.setString(1, firstName);
+                    pstat.setString(2, lastName);
+                    pstat.setString(3, address);
+                    pstat.setString(4, phoneNumber);
+                    pstat.setString(5, emailAddress);
+                    pstat.executeUpdate();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

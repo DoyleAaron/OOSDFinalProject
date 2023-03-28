@@ -13,7 +13,8 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        SQLConnect sql = new SQLConnect();
+        sql = new SQLConnect();
+        sql.connect();
     }
 
 }

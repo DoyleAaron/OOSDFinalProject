@@ -1,9 +1,6 @@
 package me.aaron;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Driver;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class SQLConnect {
@@ -25,5 +22,14 @@ public class SQLConnect {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public PreparedStatement prepareStatement(String s) {
+        try {
+            return connection.prepareStatement(s);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
