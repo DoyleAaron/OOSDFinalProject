@@ -92,6 +92,11 @@ public class Customer extends JPanel{
                     pstat.setString(5, emailAddress);
                     pstat.executeUpdate();
                     JOptionPane.showMessageDialog(Customer.this, "Data uploaded successfully.");
+                    firstNameField.setText("");
+                    secondNameField.setText("");
+                    addressField.setText("");
+                    phoneNumberField.setText("");
+                    emailAddressField.setText("");
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }

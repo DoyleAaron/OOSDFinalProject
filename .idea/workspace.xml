@@ -47,6 +47,11 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -58,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679570996669</updated>
       <workItem from="1679935121884" duration="3744000" />
-      <workItem from="1679993340438" duration="7092000" />
+      <workItem from="1679993340438" duration="7538000" />
     </task>
     <servers />
   </component>
