@@ -6,20 +6,83 @@ import javax.swing.BorderFactory;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Customer extends JPanel{
     private JTextField firstNameField;
     private JTextField lastNameField;
     private JTextField addressField;
-    private JTextField DOBField;
+    private JTextField phoneNumberField;
+    private JTextField emailAddressField;
+    private JButton submitButton;
     public Customer() {
+        JFrame frame = new JFrame("Add Customer");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        setLayout(new GridLayout(0, 1));
-        firstNameField = new JTextField(10);
-        String firstName = firstNameField.getText();
-        add(firstNameField);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0, 0, 10, 0);
+        JLabel firstNameLabel = new JLabel("First Name:");
+        add(firstNameLabel, gbc);
 
+        gbc.gridy = 1;
+        JLabel lastNameLabel = new JLabel("Last Name:");
+        add(lastNameLabel, gbc);
+
+        gbc.gridy = 2;
+        JLabel addressLabel = new JLabel("Address:");
+        add(addressLabel, gbc);
+
+        gbc.gridy = 3;
+        JLabel phoneNumberLabel = new JLabel("Phone Number:");
+        add(phoneNumberLabel, gbc);
+
+        gbc.gridy = 4;
+        JLabel emailAddressLabel = new JLabel("Email Address:");
+        add(emailAddressLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        firstNameField = new JTextField();
+        add(firstNameField, gbc);
+
+        gbc.gridy = 1;
+        lastNameField = new JTextField();
+        add(lastNameField, gbc);
+
+        gbc.gridy = 2;
+        addressField = new JTextField();
+        add(addressField, gbc);
+
+        gbc.gridy = 3;
+        phoneNumberField = new JTextField();
+        add(phoneNumberField, gbc);
+
+        gbc.gridy = 4;
+        emailAddressField = new JTextField();
+        add(emailAddressField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        submitButton = new JButton("Submit");
+        add(submitButton, gbc);
+
+    submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                String address = addressField.getText();
+                String phoneNumber = phoneNumberField.getText();
+                String emailAddress = emailAddressField.getText();
+
+                
+            }
+        });
     }
 
 }

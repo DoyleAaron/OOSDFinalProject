@@ -9,8 +9,8 @@ public class BaseFrame extends JFrame {
         JPanel panel = new JPanel();
         setLayout(new GridLayout(0, 1));
         add(panel, BorderLayout.CENTER);
+        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Base Frame");
         pack();
         setVisible(true);
     }
