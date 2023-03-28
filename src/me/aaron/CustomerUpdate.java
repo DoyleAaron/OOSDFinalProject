@@ -1,5 +1,9 @@
 package me.aaron;
 
-public class CustomerUpdate {
+import javax.swing.*;
 
+public class CustomerUpdate extends JPanel {
+    public CustomerUpdate() {
+
+    }
 }
