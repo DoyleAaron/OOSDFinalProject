@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu extends JPanel{
+
+    private JButton addStockItemButton;
+    private JButton addCustomerButton;
     public Menu() {
 
         JFrame frame = new JFrame("Add Customer");
@@ -18,9 +21,8 @@ public class Menu extends JPanel{
         gbc.insets = new Insets(0, 0, 10, 0);
 
 
-        JButton addCustomerButton = new JButton("Add Customer");
+        addCustomerButton = new JButton("Add Customer Screen");
         add(addCustomerButton);
-
         addCustomerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Add Customer");
@@ -33,8 +35,22 @@ public class Menu extends JPanel{
         });
 
 
-        JButton updateCustomerButton = new JButton("Update Customer");
-        add(updateCustomerButton);
+        addStockItemButton = new JButton("Add Stock Item Screen");
+        add(addStockItemButton);
+        addStockItemButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Add Stock Item");
+                AddStockItem addStockItem = new AddStockItem();
+                frame.add(addStockItem);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+
+
+
 
 
     }

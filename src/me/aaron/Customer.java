@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
+
 public class Customer extends JPanel{
     private JTextField firstNameField;
     private JTextField secondNameField;
@@ -18,6 +19,7 @@ public class Customer extends JPanel{
     private JTextField phoneNumberField;
     private JTextField emailAddressField;
     private JButton submitButton;
+    private JButton menuButton;
     PreparedStatement pstat = null;
 
     public Customer() {
@@ -76,6 +78,12 @@ public class Customer extends JPanel{
         submitButton = new JButton("Submit");
         add(submitButton, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        menuButton = new JButton("Return To Menu");
+        add(menuButton, gbc);
+
+
     submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String firstName = firstNameField.getText();
@@ -102,6 +110,23 @@ public class Customer extends JPanel{
                 }
             }
         });
+
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    JFrame frame = new JFrame("Main Menu");
+                    Menu menu = new Menu();
+                    frame.add(menu);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
+
+
 
 }
