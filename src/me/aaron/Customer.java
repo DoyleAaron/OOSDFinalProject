@@ -114,6 +114,8 @@ public class Customer extends JPanel{
         menuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try{
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                    currentFrame.dispose();
                     JFrame frame = new JFrame("Main Menu");
                     Menu menu = new Menu();
                     frame.add(menu);
