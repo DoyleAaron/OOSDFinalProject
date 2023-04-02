@@ -65,12 +65,15 @@ public class CustomerUpdate extends JPanel {
 
         try {
             PreparedStatement customerIDQuery = Main.sql.prepareStatement("SELECT CustomerID FROM Customer");
+            // This is the query to get all of the customer IDs
             ResultSet custIDs = customerIDQuery.executeQuery();
+            // This is putting all of the customer IDs into a result set
 
             while (custIDs.next()) {
                 int customerID = custIDs.getInt("CustomerID");
                 CustomerIDField.addItem(customerID);
             }
+            //This while loop is iterating through the result set and assigning each of them into the combo box
         } catch (SQLException custIDQuery) {
             custIDQuery.printStackTrace();
         }
@@ -94,16 +97,19 @@ public class CustomerUpdate extends JPanel {
         gbc.gridy = 5;
         emailAddressField = new JTextField();
         add(emailAddressField, gbc);
+        // These are the text fields so the user can update the details for the customer
 
         gbc.gridx = 0;
         gbc.gridy = 6;
         submitButton = new JButton("Submit");
         add(submitButton, gbc);
+        // Submit button
 
         gbc.gridx = 0;
         gbc.gridy = 7;
         menuButton = new JButton("Return To Menu");
         add(menuButton, gbc);
+        // Return to menu button
 
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent sqlUpdateEvent) {
@@ -112,26 +118,43 @@ public class CustomerUpdate extends JPanel {
                 String address = addressField.getText();
                 String phoneNumber = phoneNumberField.getText();
                 String emailAddress = emailAddressField.getText();
-                pstat = Main.sql.prepareStatement("UPDATE customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?) WHERE customerID = ?");
+                //This is getting the values from the text fields and assigning them to variables
+                pstat = Main.sql.prepareStatement("UPDATE customer SET firstName = ?, secondName = ?, address = ?, phoneNumber = ?, emailAddress = ? WHERE customerID = ?");
+                //This is the SQL query for updating the customer data in the customer table
                 try {
-
                     pstat.setString(1, firstName);
                     pstat.setString(2, secondName);
                     pstat.setString(3, address);
                     pstat.setString(4, phoneNumber);
                     pstat.setString(5, emailAddress);
+                    pstat.setInt(6, (int) CustomerIDField.getSelectedItem());
                     pstat.executeUpdate();
+                    //This is assigning the values from the text fields for the SQL query
                     JOptionPane.showMessageDialog(CustomerUpdate.this, "Customer Data updated successfully.");
                     firstNameField.setText("");
                     secondNameField.setText("");
                     addressField.setText("");
                     phoneNumberField.setText("");
                     emailAddressField.setText("");
+                    //This is clearing the text fields after the data has been updated
                 } catch (SQLException sqlInsertException) {
                     sqlInsertException.printStackTrace();
                 }
             }
         });
 
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent menuButtonEvent) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) menuButtonEvent.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Main Menu");
+                Menu menu = new Menu();
+                frame.add(menu);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+            // This is the action button for the menu button which closes the current window and loads the menu
+        });
     }
 }
