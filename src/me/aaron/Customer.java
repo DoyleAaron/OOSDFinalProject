@@ -13,11 +13,11 @@ import java.sql.SQLException;
 
 
 public class Customer extends JPanel{
-    private JTextField firstNameField;
-    private JTextField secondNameField;
-    private JTextField addressField;
-    private JTextField phoneNumberField;
-    private JTextField emailAddressField;
+    private final JTextField firstNameField;
+    private final JTextField secondNameField;
+    private final JTextField addressField;
+    private final JTextField phoneNumberField;
+    private final JTextField emailAddressField;
     private JButton submitButton;
     private JButton menuButton;
     PreparedStatement pstat = null;
@@ -85,13 +85,13 @@ public class Customer extends JPanel{
 
 
     submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent sqlInsertEvent) {
                 String firstName = firstNameField.getText();
                 String secondName = secondNameField.getText();
                 String address = addressField.getText();
                 String phoneNumber = phoneNumberField.getText();
                 String emailAddress = emailAddressField.getText();
-                pstat = Main.sql.prepareStatement("INSERT INTO customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?)");
+                 pstat = Main.sql.prepareStatement("INSERT INTO customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?)");
                 try {
                     pstat.setString(1, firstName);
                     pstat.setString(2, secondName);
@@ -105,16 +105,16 @@ public class Customer extends JPanel{
                     addressField.setText("");
                     phoneNumberField.setText("");
                     emailAddressField.setText("");
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
+                } catch (SQLException sqlUploadException) {
+                    sqlUploadException.printStackTrace();
                 }
             }
         });
 
         menuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent menuButtonEvent) {
                 try{
-                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) menuButtonEvent.getSource());
                     currentFrame.dispose();
                     JFrame frame = new JFrame("Main Menu");
                     Menu menu = new Menu();
@@ -122,13 +122,11 @@ public class Customer extends JPanel{
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                } catch (Exception menuEvent) {
+                    menuEvent.printStackTrace();
                 }
             }
         });
     }
-
-
 
 }

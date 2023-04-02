@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 public class AddStockItem extends JPanel{
 
-    private JTextField stockItemNameField;
-    private JTextField stockItemQuantityField;
-    private JTextField stockItemPriceField;
+    private final JTextField stockItemNameField;
+    private final JTextField stockItemQuantityField;
+    private final JTextField stockItemPriceField;
     private JButton submitButton;
     private JButton menuButton;
     PreparedStatement pstat = null;
@@ -76,17 +76,21 @@ public class AddStockItem extends JPanel{
                 String itemName = stockItemNameField.getText();
                 String itemQuantity = stockItemQuantityField.getText();
                 String itemPrice = stockItemPriceField.getText();
+                // This code is getting the data from the text fields
 
                 pstat = Main.sql.prepareStatement("INSERT INTO stock (itemName, itemQuantity, itemPrice) VALUES (?, ?, ?)");
+                // This code is inserting the data into the database
                 try{
                     pstat.setString(1, itemName);
                     pstat.setString(2, itemQuantity);
                     pstat.setString(3, itemPrice);
                     pstat.executeUpdate();
+                    // This code is assigning the data to strings and executing the query
                     JOptionPane.showMessageDialog(AddStockItem.this, "Data uploaded successfully.");
                     stockItemNameField.setText("");
                     stockItemQuantityField.setText("");
                     stockItemPriceField.setText("");
+                    // This code is clearing the text fields after uploading the data
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
