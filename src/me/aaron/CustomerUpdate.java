@@ -8,7 +8,9 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.*;
 
 public class CustomerUpdate extends JPanel {
 
@@ -61,6 +63,18 @@ public class CustomerUpdate extends JPanel {
         CustomerIDField = new JComboBox();
         add(CustomerIDField, gbc);
 
+        try {
+            PreparedStatement customerIDQuery = Main.sql.prepareStatement("SELECT CustomerID FROM Customer");
+            ResultSet custIDs = customerIDQuery.executeQuery();
+
+            while (custIDs.next()) {
+                int customerID = custIDs.getInt("CustomerID");
+                CustomerIDField.addItem(customerID);
+            }
+        } catch (SQLException custIDQuery) {
+            custIDQuery.printStackTrace();
+        }
+
         gbc.gridy = 1;
         firstNameField = new JTextField();
         add(firstNameField, gbc);
@@ -100,7 +114,7 @@ public class CustomerUpdate extends JPanel {
                 String emailAddress = emailAddressField.getText();
                 pstat = Main.sql.prepareStatement("UPDATE customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?) WHERE customerID = ?");
                 try {
-                    
+
                     pstat.setString(1, firstName);
                     pstat.setString(2, secondName);
                     pstat.setString(3, address);
