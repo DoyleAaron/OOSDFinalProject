@@ -9,6 +9,7 @@ public class Menu extends JPanel{
 
     private JButton addStockItemButton;
     private JButton addCustomerButton;
+    private JButton updateCustomerButton;
     public Menu() {
 
         JFrame frame = new JFrame("Add Customer");
@@ -52,6 +53,20 @@ public class Menu extends JPanel{
             }
         });
 
+        updateCustomerButton = new JButton("Update Customer Screen");
+        add(updateCustomerButton);
+        updateCustomerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Update Customer");
+                CustomerUpdate updateCustomer = new CustomerUpdate();
+                frame.add(updateCustomer);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
 
 
 

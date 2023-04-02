@@ -24,6 +24,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/me/aaron/CustomerUpdate.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -72,7 +75,7 @@
       <workItem from="1679993340438" duration="13474000" />
       <workItem from="1680164049500" duration="388000" />
       <workItem from="1680460572468" duration="99000" />
-      <workItem from="1680460761842" duration="2014000" />
+      <workItem from="1680460761842" duration="3164000" />
     </task>
     <servers />
   </component>
