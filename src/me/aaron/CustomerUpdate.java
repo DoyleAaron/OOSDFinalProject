@@ -60,5 +60,64 @@ public class CustomerUpdate extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         CustomerIDField = new JComboBox();
         add(CustomerIDField, gbc);
+
+        gbc.gridy = 1;
+        firstNameField = new JTextField();
+        add(firstNameField, gbc);
+
+        gbc.gridy = 2;
+        secondNameField = new JTextField();
+        add(secondNameField, gbc);
+
+        gbc.gridy = 3;
+        addressField = new JTextField();
+        add(addressField, gbc);
+
+        gbc.gridy = 4;
+        phoneNumberField = new JTextField();
+        add(phoneNumberField, gbc);
+
+        gbc.gridy = 5;
+        emailAddressField = new JTextField();
+        add(emailAddressField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        submitButton = new JButton("Submit");
+        add(submitButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        menuButton = new JButton("Return To Menu");
+        add(menuButton, gbc);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent sqlUpdateEvent) {
+                String firstName = firstNameField.getText();
+                String secondName = secondNameField.getText();
+                String address = addressField.getText();
+                String phoneNumber = phoneNumberField.getText();
+                String emailAddress = emailAddressField.getText();
+                pstat = Main.sql.prepareStatement("UPDATE customer (firstName, secondName, address, phoneNumber, emailAddress) VALUES (?, ?, ?, ?, ?) WHERE customerID = ?");
+                try {
+                    
+                    pstat.setString(1, firstName);
+                    pstat.setString(2, secondName);
+                    pstat.setString(3, address);
+                    pstat.setString(4, phoneNumber);
+                    pstat.setString(5, emailAddress);
+                    pstat.executeUpdate();
+                    JOptionPane.showMessageDialog(CustomerUpdate.this, "Customer Data updated successfully.");
+                    firstNameField.setText("");
+                    secondNameField.setText("");
+                    addressField.setText("");
+                    phoneNumberField.setText("");
+                    emailAddressField.setText("");
+                } catch (SQLException sqlInsertException) {
+                    sqlInsertException.printStackTrace();
+                }
+            }
+        });
+
     }
 }
