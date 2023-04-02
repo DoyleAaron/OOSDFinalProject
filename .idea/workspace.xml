@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="83682b84-2bcb-4cbf-b554-2e8b7e2f1e09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8db67c2a-f9ae-4303-8792-08798253ac23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8db67c2a-f9ae-4303-8792-08798253ac23.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8db67c2a-f9ae-4303-8792-08798253ac23.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/me/aaron/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/me/aaron/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +51,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -71,6 +71,8 @@
       <workItem from="1679935121884" duration="3744000" />
       <workItem from="1679993340438" duration="13474000" />
       <workItem from="1680164049500" duration="388000" />
+      <workItem from="1680460572468" duration="99000" />
+      <workItem from="1680460761842" duration="516000" />
     </task>
     <servers />
   </component>

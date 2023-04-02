@@ -25,6 +25,8 @@ public class Menu extends JPanel{
         add(addCustomerButton);
         addCustomerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                currentFrame.dispose();
                 JFrame frame = new JFrame("Add Customer");
                 Customer customer = new Customer();
                 frame.add(customer);
@@ -39,6 +41,8 @@ public class Menu extends JPanel{
         add(addStockItemButton);
         addStockItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                currentFrame.dispose();
                 JFrame frame = new JFrame("Add Stock Item");
                 AddStockItem addStockItem = new AddStockItem();
                 frame.add(addStockItem);
