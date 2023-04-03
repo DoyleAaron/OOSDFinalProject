@@ -112,18 +112,18 @@ public class Customer extends JPanel{
         });
 
         menuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent menuButtonEvent) {
+            public void actionPerformed(ActionEvent customerMenuButtonEvent) {
                 try{
-                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) menuButtonEvent.getSource());
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) customerMenuButtonEvent.getSource());
                     currentFrame.dispose();
-                    JFrame frame = new JFrame("Main Menu");
-                    Menu menu = new Menu();
-                    frame.add(menu);
+                    JFrame frame = new JFrame("Customer Menu");
+                    CustomerMenu customerMenu = new CustomerMenu();
+                    frame.add(customerMenu);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
-                } catch (Exception menuEvent) {
-                    menuEvent.printStackTrace();
+                } catch (Exception customerMenuEvent) {
+                    customerMenuEvent.printStackTrace();
                 }
             }
         });

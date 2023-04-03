@@ -144,17 +144,17 @@ public class CustomerUpdate extends JPanel {
         });
 
         menuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent menuButtonEvent) {
-                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) menuButtonEvent.getSource());
+            public void actionPerformed(ActionEvent customerMenuButtonEvent) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) customerMenuButtonEvent.getSource());
                 currentFrame.dispose();
-                JFrame frame = new JFrame("Main Menu");
-                Menu menu = new Menu();
-                frame.add(menu);
+                JFrame frame = new JFrame("Customer Menu");
+                CustomerMenu CustomerMenu = new CustomerMenu();
+                frame.add(CustomerMenu);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
-            // This is the action button for the menu button which closes the current window and loads the menu
+            // This is the action button for the menu button which closes the current window and loads the customer menu
         });
     }
 }

@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JPanel{
 
-    private JButton addStockItemButton;
-    private JButton addCustomerButton;
+    private JButton stockButton;
+    private JButton customerButton;
     private JButton updateCustomerButton;
     public Menu() {
 
-        JFrame frame = new JFrame("Add Customer");
+        JFrame frame = new JFrame("Menu");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -21,28 +21,26 @@ public class Menu extends JPanel{
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0, 0, 10, 0);
 
-
-        addCustomerButton = new JButton("Add Customer Screen");
-        add(addCustomerButton);
-        addCustomerButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+        customerButton = new JButton("Customer");
+        add(customerButton);
+customerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent customerButton){
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) customerButton.getSource());
                 currentFrame.dispose();
-                JFrame frame = new JFrame("Add Customer");
-                Customer customer = new Customer();
-                frame.add(customer);
+                JFrame frame = new JFrame("Customer Menu");
+                CustomerMenu customerMenu = new CustomerMenu();
+                frame.add(customerMenu);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
         });
 
-
-        addStockItemButton = new JButton("Add Stock Item Screen");
-        add(addStockItemButton);
-        addStockItemButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+        stockButton = new JButton("Stock");
+        add(stockButton);
+        stockButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent addStockButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) addStockButton.getSource());
                 currentFrame.dispose();
                 JFrame frame = new JFrame("Add Stock Item");
                 AddStockItem addStockItem = new AddStockItem();
@@ -52,24 +50,6 @@ public class Menu extends JPanel{
                 frame.setVisible(true);
             }
         });
-
-        updateCustomerButton = new JButton("Update Customer Screen");
-        add(updateCustomerButton);
-        updateCustomerButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
-                currentFrame.dispose();
-                JFrame frame = new JFrame("Update Customer");
-                CustomerUpdate updateCustomer = new CustomerUpdate();
-                frame.add(updateCustomer);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
-
-
-
 
 
     }

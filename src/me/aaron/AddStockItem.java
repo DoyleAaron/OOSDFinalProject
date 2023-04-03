@@ -103,9 +103,9 @@ public class AddStockItem extends JPanel{
                 try{
                     JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
                     currentFrame.dispose();
-                    JFrame frame = new JFrame("Main Menu");
-                    Menu menu = new Menu();
-                    frame.add(menu);
+                    JFrame frame = new JFrame("Stock Menu");
+                    StockMenu StockMenu = new StockMenu();
+                    frame.add(StockMenu);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
