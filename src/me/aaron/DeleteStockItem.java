@@ -37,9 +37,9 @@ public class DeleteStockItem extends JPanel{
 
         try {
             PreparedStatement stockIDQuery = Main.sql.prepareStatement("SELECT stockID FROM Stock");
-            // This is the query to get all of the stock IDs
+            // This is the query to get all the stock IDs
             ResultSet stockIDs = stockIDQuery.executeQuery();
-            // This is putting all of the stock IDs into a result set
+            // This is putting all the stock IDs into a result set
 
             while (stockIDs.next()) {
                 int stockID = stockIDs.getInt("stockID");

@@ -9,6 +9,7 @@ public class CustomerMenu extends JPanel{
     private JButton addCustomerButton;
     private JButton updateCustomerButton;
     private JButton deleteCustomerButton;
+    private JButton returnButton;
     public CustomerMenu() {
         JFrame frame = new JFrame("Menu");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -60,6 +61,21 @@ public class CustomerMenu extends JPanel{
                 JFrame frame = new JFrame("Delete Customer");
                 DeleteCustomer DeleteCustomer = new DeleteCustomer();
                 frame.add(DeleteCustomer);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        returnButton = new JButton("Main Menu");
+        add(returnButton);
+        returnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent returnButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) returnButton.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Main Menu");
+                Menu menu = new Menu();
+                frame.add(menu);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
