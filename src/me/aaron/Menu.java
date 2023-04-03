@@ -9,7 +9,6 @@ public class Menu extends JPanel{
 
     private JButton stockButton;
     private JButton customerButton;
-    private JButton updateCustomerButton;
     public Menu() {
 
         JFrame frame = new JFrame("Menu");
@@ -39,12 +38,12 @@ customerButton.addActionListener(new ActionListener() {
         stockButton = new JButton("Stock");
         add(stockButton);
         stockButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent addStockButton) {
-                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) addStockButton.getSource());
+            public void actionPerformed(ActionEvent StockMenuButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) StockMenuButton.getSource());
                 currentFrame.dispose();
-                JFrame frame = new JFrame("Add Stock Item");
-                AddStockItem addStockItem = new AddStockItem();
-                frame.add(addStockItem);
+                JFrame frame = new JFrame("Stock");
+                StockMenu StockMenu = new StockMenu();
+                frame.add(StockMenu);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
