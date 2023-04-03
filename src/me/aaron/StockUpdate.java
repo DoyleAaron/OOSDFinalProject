@@ -127,7 +127,7 @@ public class StockUpdate extends JPanel{
                 frame.pack();
                 frame.setVisible(true);
             }
-            // This is the action button for the menu button which closes the current window and loads the customer menu
+            // This is the action button for the menu button which closes the current window and loads the stock menu
         });
     }
 }

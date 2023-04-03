@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class CustomerMenu extends JPanel{
     private JButton addCustomerButton;
     private JButton updateCustomerButton;
+    private JButton deleteCustomerButton;
     public CustomerMenu() {
         JFrame frame = new JFrame("Menu");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -43,6 +44,22 @@ public class CustomerMenu extends JPanel{
                 JFrame frame = new JFrame("Update Customer");
                 CustomerUpdate updateCustomer = new CustomerUpdate();
                 frame.add(updateCustomer);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        deleteCustomerButton = new JButton("Delete Customer Screen");
+        add(deleteCustomerButton);
+
+        deleteCustomerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent deleteCustomerButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) deleteCustomerButton.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Delete Customer");
+                DeleteCustomer DeleteCustomer = new DeleteCustomer();
+                frame.add(DeleteCustomer);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
