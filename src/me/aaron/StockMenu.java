@@ -10,6 +10,7 @@ public class StockMenu extends JPanel {
     private JButton addStockButton;
     private JButton updateStockButton;
     private JButton deleteStockButton;
+    private JButton viewStockButton;
     private JButton returnButton;
     public StockMenu() {
         addStockButton = new JButton("Add Stock Item");
@@ -52,6 +53,22 @@ public class StockMenu extends JPanel {
                 JFrame frame = new JFrame("Delete Stock Item");
                 DeleteStockItem DeleteStockItem = new DeleteStockItem();
                 frame.add(DeleteStockItem);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        viewStockButton = new JButton("View Stock");
+        add(viewStockButton);
+
+        viewStockButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent viewStockButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) viewStockButton.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("View Stock Item");
+                ViewStock ViewStock = new ViewStock();
+                frame.add(ViewStock);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
