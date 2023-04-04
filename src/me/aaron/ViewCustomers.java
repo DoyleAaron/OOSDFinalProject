@@ -118,15 +118,52 @@ public class ViewCustomers extends JPanel{
         selectButton.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent customerViewEvent){
                pstat = Main.sql.prepareStatement("SELECT * FROM Customer WHERE CustomerID = ?");
+               // Here I am getting all of the customer details from the DB
                try {
                    pstat.setInt(1, (int) CustomerIDBox.getSelectedItem());
+                   //This is so the customer ID is the one that is selected in the combo box
                      ResultSet customerDetailsSet = pstat.executeQuery();
-                        ResultSetMetaData customerDetailsSetMetaData = customerDetailsSet.getMetaData();
+                     ResultSetMetaData customerDetailsSetMetaData = customerDetailsSet.getMetaData();
+                     int columnAmount = customerDetailsSetMetaData.getColumnCount();
+                     // Here I'm getting the amount of columns so that i can assign the value of each column to the correct text field
+
+                   while (customerDetailsSet.next()) {
+                       for (int row = 1; row <= columnAmount; row++) {
+                           if (row == 1) {
+                               firstNameField.setText(customerDetailsSet.getString(row));
+                           } else if (row == 2) {
+                               secondNameField.setText(customerDetailsSet.getString(row));
+                           } else if (row == 3) {
+                               addressField.setText(customerDetailsSet.getString(row));
+                           } else if (row == 4) {
+                               phoneNumberField.setText(customerDetailsSet.getString(row));
+                           } else if (row == 5) {
+                               emailAddressField.setText(customerDetailsSet.getString(row));
+                           }
+                       }
+                   }
+                   // This while loop is being ussed to iterate through the data from the database and assign into the uneditable text fields that we have in the gui
+                   // so that the user can view the customer details
+                   JOptionPane.showMessageDialog(ViewCustomers.this, "Customer Selected From Database Successfully.");
+                   // This pop up is to let the user know that the customers information has been retrieved from the database successfully
                } catch (SQLException customerIDBoxQuery) {
                    customerIDBoxQuery.printStackTrace();
                }
            }
         });
 
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent MenuButtonEvent) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) MenuButtonEvent.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Customer Menu");
+                CustomerMenu CustomerMenu = new CustomerMenu();
+                frame.add(CustomerMenu);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+            // This is the action button for the menu button which closes the current window and loads the customer menu
+        });
     }
 }
