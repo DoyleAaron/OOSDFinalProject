@@ -9,6 +9,7 @@ public class CustomerMenu extends JPanel{
     private JButton addCustomerButton;
     private JButton updateCustomerButton;
     private JButton deleteCustomerButton;
+    private JButton viewCustomerButton;
     private JButton returnButton;
     public CustomerMenu() {
         JFrame frame = new JFrame("Menu");
@@ -61,6 +62,21 @@ public class CustomerMenu extends JPanel{
                 JFrame frame = new JFrame("Delete Customer");
                 DeleteCustomer DeleteCustomer = new DeleteCustomer();
                 frame.add(DeleteCustomer);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        viewCustomerButton = new JButton("View Customer Screen");
+        add(viewCustomerButton);
+        viewCustomerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent viewCustomerButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) viewCustomerButton.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("View Customer Information");
+                ViewCustomers viewCustomers = new ViewCustomers();
+                frame.add(viewCustomers);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

@@ -99,13 +99,11 @@ public class CustomerUpdate extends JPanel {
         add(emailAddressField, gbc);
         // These are the text fields so the user can update the details for the customer
 
-        gbc.gridx = 0;
         gbc.gridy = 6;
         submitButton = new JButton("Submit");
         add(submitButton, gbc);
         // Submit button
 
-        gbc.gridx = 0;
         gbc.gridy = 7;
         menuButton = new JButton("Return To Menu");
         add(menuButton, gbc);
