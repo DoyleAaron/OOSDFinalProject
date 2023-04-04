@@ -103,7 +103,7 @@ public class ViewCustomers extends JPanel{
         emailAddressField = new JTextField();
         emailAddressField.setEditable(false);
         add(emailAddressField, gbc);
-        // These are the text fields so the user can view the details of the customer
+        // These are the text fields so the user can view the details of the customer, I set them to non-editable as this is only the view screen and not update
 
         gbc.gridy = 6;
         selectButton = new JButton("Select Customer");
@@ -115,7 +115,18 @@ public class ViewCustomers extends JPanel{
         add(menuButton, gbc);
         // Return to menu button
 
-
+        selectButton.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent customerViewEvent){
+               pstat = Main.sql.prepareStatement("SELECT * FROM Customer WHERE CustomerID = ?");
+               try {
+                   pstat.setInt(1, (int) CustomerIDBox.getSelectedItem());
+                     ResultSet customerDetailsSet = pstat.executeQuery();
+                        ResultSetMetaData customerDetailsSetMetaData = customerDetailsSet.getMetaData();
+               } catch (SQLException customerIDBoxQuery) {
+                   customerIDBoxQuery.printStackTrace();
+               }
+           }
+        });
 
     }
 }
