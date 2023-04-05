@@ -9,6 +9,7 @@ public class Menu extends JPanel{
 
     private JButton stockButton;
     private JButton customerButton;
+    private JButton invoiceButton;
     public Menu() {
 
         JFrame frame = new JFrame("Menu");
@@ -50,6 +51,20 @@ customerButton.addActionListener(new ActionListener() {
             }
         });
 
+        invoiceButton = new JButton("Invoice");
+        add(invoiceButton);
 
+        invoiceButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent invoiceButton) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) invoiceButton.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Invoice");
+                InvoiceMenu InvoiceMenu = new InvoiceMenu();
+                frame.add(InvoiceMenu);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 }

@@ -77,12 +77,12 @@ public class CreateInvoice extends JPanel {
         itemQuantityField = new JTextField();
         add(itemQuantityField, gbc);
 
-        gbc.gridy = 6;
+        gbc.gridy = 4;
         submitButton = new JButton("Submit");
         add(submitButton, gbc);
         // Submit button
 
-        gbc.gridy = 7;
+        gbc.gridy = 5;
         menuButton = new JButton("Return To Menu");
         add(menuButton, gbc);
         // Return to menu button
@@ -93,8 +93,8 @@ public class CreateInvoice extends JPanel {
                 String itemPrice = itemPriceField.getText();
                 String itemQuantity = itemQuantityField.getText();
                 //This is getting the values from the text fields and assigning them to variables
-                pstat = Main.sql.prepareStatement("INSERT INTO Invoice (itemName, itemPrice, itemQuantity) VALUES (?, ?, ?)");
-                //This is the SQL query for updating the customer data in the customer table
+                pstat = Main.sql.prepareStatement("INSERT INTO Invoice (itemName, itemPrice, itemQuantity, customerID) VALUES (?, ?, ?, ?)");
+                //This is the SQL query for updating the database with the new invoice data
                 try {
                     pstat.setString(1, itemName);
                     pstat.setString(2, itemPrice);
@@ -111,6 +111,20 @@ public class CreateInvoice extends JPanel {
                     sqlInsertException.printStackTrace();
                 }
             }
+        });
+
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent invoiceMenuButtonEvent) {
+                JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) invoiceMenuButtonEvent.getSource());
+                currentFrame.dispose();
+                JFrame frame = new JFrame("Invoice Menu");
+                InvoiceMenu InvoiceMenu = new InvoiceMenu();
+                frame.add(InvoiceMenu);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+            // This is the action button for the menu button which closes the current window and loads the invoice menu
         });
     }
 }

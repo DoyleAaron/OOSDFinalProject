@@ -45,32 +45,32 @@ public class InvoiceMenu extends JPanel {
                 }
             });
 
-            deleteStockButton = new JButton("Delete Stock Item");
-            add(deleteStockButton);
+            deleteInvoiceButton = new JButton("Delete Invoice");
+            add(deleteInvoiceButton);
 
-            deleteStockButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent deleteStockButton) {
-                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) deleteStockButton.getSource());
+            deleteInvoiceButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent deleteInvoiceButton) {
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) deleteInvoiceButton.getSource());
                     currentFrame.dispose();
-                    JFrame frame = new JFrame("Delete Stock Item");
-                    DeleteStockItem DeleteStockItem = new DeleteStockItem();
-                    frame.add(DeleteStockItem);
+                    JFrame frame = new JFrame("Delete Invoice");
+                    DeleteInvoice DeleteInvoice = new DeleteInvoice();
+                    frame.add(DeleteInvoice);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
                 }
             });
 
-            viewStockButton = new JButton("View Stock");
-            add(viewStockButton);
+            viewInvoiceButton = new JButton("View Invoice");
+            add(viewInvoiceButton);
 
-            viewStockButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent viewStockButton) {
-                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) viewStockButton.getSource());
+            viewInvoiceButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent viewInvoiceButton) {
+                    JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor((JComponent) viewInvoiceButton.getSource());
                     currentFrame.dispose();
-                    JFrame frame = new JFrame("View Stock Item");
-                    ViewStock ViewStock = new ViewStock();
-                    frame.add(ViewStock);
+                    JFrame frame = new JFrame("View Invoice");
+                    ViewInvoice ViewInvoice = new ViewInvoice();
+                    frame.add(ViewInvoice);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
