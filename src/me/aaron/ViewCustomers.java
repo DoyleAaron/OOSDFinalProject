@@ -18,6 +18,7 @@ public class ViewCustomers extends JPanel{
     private JTextField secondNameField;
     private JTextField addressField;
     private JTextField phoneNumberField;
+    private JTextField customerIDField;
     private JTextField emailAddressField;
     private JButton menuButton;
     private JButton selectButton;
@@ -53,6 +54,10 @@ public class ViewCustomers extends JPanel{
         add(phoneNumberLabel, gbc);
 
         gbc.gridy = 5;
+        JLabel customerIDLabel = new JLabel("Customer ID:");
+        add(customerIDLabel, gbc);
+
+        gbc.gridy = 6;
         JLabel emailAddressLabel = new JLabel("Email Address:");
         add(emailAddressLabel, gbc);
 
@@ -100,17 +105,22 @@ public class ViewCustomers extends JPanel{
         add(phoneNumberField, gbc);
 
         gbc.gridy = 5;
+        customerIDField = new JTextField();
+        customerIDField.setEditable(false);
+        add(customerIDField, gbc);
+
+        gbc.gridy = 6;
         emailAddressField = new JTextField();
         emailAddressField.setEditable(false);
         add(emailAddressField, gbc);
         // These are the text fields so the user can view the details of the customer, I set them to non-editable as this is only the view screen and not update
 
-        gbc.gridy = 6;
+        gbc.gridy = 7;
         selectButton = new JButton("Select Customer");
         add(selectButton, gbc);
         // Select Customer Button
 
-        gbc.gridy = 7;
+        gbc.gridy = 8;
         menuButton = new JButton("Return To Menu");
         add(menuButton, gbc);
         // Return to menu button
@@ -138,6 +148,8 @@ public class ViewCustomers extends JPanel{
                            } else if (row == 4) {
                                phoneNumberField.setText(customerDetailsSet.getString(row));
                            } else if (row == 5) {
+                               customerIDField.setText(customerDetailsSet.getString(row));
+                           } else if (row == 6) {
                                emailAddressField.setText(customerDetailsSet.getString(row));
                            }
                        }
