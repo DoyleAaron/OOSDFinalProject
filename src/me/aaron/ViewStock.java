@@ -14,6 +14,7 @@ import java.sql.ResultSetMetaData;
 
 
 public class ViewStock extends JPanel{
+    private JTextField stockIDField;
     private JTextField itemNameField;
     private JTextField itemQuantityField;
     private JTextField itemPriceField;
@@ -35,14 +36,18 @@ public class ViewStock extends JPanel{
         // Here I am adding the label to the gui
 
         gbc.gridy = 1;
+        JLabel stockIDLabel = new JLabel("Stock ID:");
+        add(stockIDLabel, gbc);
+
+        gbc.gridy = 2;
         JLabel itemNameLabel = new JLabel("Item Name:");
         add(itemNameLabel, gbc);
 
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         JLabel itemQuantityLabel = new JLabel("Item Quantity:");
         add(itemQuantityLabel, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         JLabel itemPriceLabel = new JLabel("Item Price:");
         add(itemPriceLabel, gbc);
 
@@ -70,26 +75,31 @@ public class ViewStock extends JPanel{
         }
 
         gbc.gridy = 1;
+        stockIDField = new JTextField();
+        stockIDField.setEditable(false);
+        add(stockIDField, gbc);
+
+        gbc.gridy = 2;
         itemNameField = new JTextField();
         itemNameField.setEditable(false);
         add(itemNameField, gbc);
 
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         itemQuantityField = new JTextField();
         itemQuantityField.setEditable(false);
         add(itemQuantityField, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         itemPriceField = new JTextField();
         itemPriceField.setEditable(false);
         add(itemPriceField, gbc);
 
-        gbc.gridy = 6;
+        gbc.gridy = 5;
         selectButton = new JButton("Select Stock Item");
         add(selectButton, gbc);
         // Select Stock Item Button
 
-        gbc.gridy = 7;
+        gbc.gridy = 6;
         menuButton = new JButton("Return To Menu");
         add(menuButton, gbc);
         // Return to menu button
@@ -109,10 +119,12 @@ public class ViewStock extends JPanel{
                     while (stockDetailsSet.next()) {
                         for (int row = 1; row <= columnAmount; row++) {
                             if (row == 1) {
-                                itemNameField.setText(stockDetailsSet.getString(row));
+                                stockIDField.setText(stockDetailsSet.getString(row));
                             } else if (row == 2) {
-                                itemQuantityField.setText(stockDetailsSet.getString(row));
+                                itemNameField.setText(stockDetailsSet.getString(row));
                             } else if (row == 3) {
+                                itemQuantityField.setText(stockDetailsSet.getString(row));
+                            } else if (row == 4) {
                                 itemPriceField.setText(stockDetailsSet.getString(row));
                             }
                         }
