@@ -14,7 +14,7 @@ public class InvoiceMenu extends JPanel {
     private JButton returnButton;
 
     public InvoiceMenu() {
-            addInvoiceButton = new JButton("Add Stock Item");
+            addInvoiceButton = new JButton("Create Invoice");
             add(addInvoiceButton);
             addInvoiceButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent addInvoiceButton) {

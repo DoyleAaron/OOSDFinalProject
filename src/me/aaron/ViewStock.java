@@ -23,7 +23,7 @@ public class ViewStock extends JPanel{
     PreparedStatement pstat = null;
     private JComboBox<Integer> stockIDCombobox;
     public ViewStock(){
-        JFrame frame = new JFrame("View Customer Info");
+        JFrame frame = new JFrame("View Stock Info");
         setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -31,7 +31,7 @@ public class ViewStock extends JPanel{
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0, 0, 10, 0);
-        JLabel comboBoxLabel = new JLabel("Select the customer you would like to view:");
+        JLabel comboBoxLabel = new JLabel("Select the stock item ID you would like to view:");
         add(comboBoxLabel, gbc);
         // Here I am adding the label to the gui
 
