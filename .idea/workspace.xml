@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SofDevProject:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -75,7 +80,7 @@
       <workItem from="1680514867327" duration="7496000" />
       <workItem from="1680637453265" duration="5307000" />
       <workItem from="1680716298627" duration="5849000" />
-      <workItem from="1680771246561" duration="175000" />
+      <workItem from="1680771246561" duration="335000" />
     </task>
     <servers />
   </component>
